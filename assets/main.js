@@ -361,26 +361,83 @@ function bindQuoteForm() {
 function renderSchema() {
   const target = $("#localBusinessSchema");
   if (!target) return;
+  const siteUrl = cfg.websiteUrl || window.location.origin + "/";
+  const normalizedSiteUrl = siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`;
   const schema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": cfg.brandName || "SỬA CHỮA ĐIỆN LẠNH TẠI NHÀ",
-    "url": cfg.websiteUrl || window.location.href,
-    "telephone": cfg.phoneRaw || "",
-    "email": cfg.email || "",
-    "areaServed": cfg.serviceArea || "",
-    "openingHours": "Mo-Su 07:00-21:00",
-    "priceRange": "$$",
-    "image": `${cfg.websiteUrl || window.location.origin}/assets/hero-service.webp`,
-    "description": "Dịch vụ sửa tủ lạnh, sửa máy giặt và sửa bếp từ tại nhà. Kỹ thuật viên trên 10 năm kinh nghiệm, kiểm tra tận nơi, báo giá trước khi sửa.",
-    "makesOffer": services.map((service) => ({
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": service.title,
-        "description": service.desc
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${normalizedSiteUrl}#website`,
+        "name": cfg.brandName || "Sửa chữa điện lạnh tại nhà",
+        "url": normalizedSiteUrl,
+        "inLanguage": "vi-VN"
+      },
+      {
+        "@type": "HomeAndConstructionBusiness",
+        "@id": `${normalizedSiteUrl}#business`,
+        "name": cfg.brandName || "Sửa chữa điện lạnh tại nhà",
+        "url": normalizedSiteUrl,
+        "image": `${normalizedSiteUrl}assets/hero-service.webp`,
+        "telephone": cfg.phoneRaw || "",
+        "email": cfg.email || "",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "TP.HCM"
+        },
+        "priceRange": "Từ 250.000đ",
+        "openingHours": "Mo-Su 07:00-21:00",
+        "serviceType": [
+          "Sửa tủ lạnh tại nhà",
+          "Sửa máy giặt tại nhà",
+          "Sửa bếp từ tại nhà"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Dịch vụ sửa điện lạnh tại nhà TP.HCM",
+          "itemListElement": services.map((service) => ({
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": `${service.title} tại nhà`,
+              "description": service.desc,
+              "serviceType": service.title,
+              "areaServed": "TP.HCM"
+            }
+          }))
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${normalizedSiteUrl}#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bảng giá trên website có phải giá cuối cùng không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Không. Đây là giá tham khảo. Chi phí thực tế phụ thuộc tình trạng thiết bị, linh kiện và mức độ hư hỏng sau khi kiểm tra."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Có báo giá trước khi sửa không?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Có. Kỹ thuật viên kiểm tra và báo phương án xử lý trước. Khách hàng đồng ý thì mới tiến hành sửa chữa."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bấm hotline và Zalo hoạt động thế nào?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bấm hotline sẽ mở app điện thoại để gọi. Bấm Zalo sẽ mở cửa sổ nhắn tin Zalo với số kỹ thuật viên."
+            }
+          }
+        ]
       }
-    }))
+    ]
   };
   target.textContent = JSON.stringify(schema);
 }

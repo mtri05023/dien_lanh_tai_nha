@@ -6,5 +6,5 @@ window.SITE_CONFIG = {
   zaloNumber: "0899993032",
   email: "ngocnguyen9619@gmail.com",
   serviceArea: "TP.HCM và khu vực lân cận",
-  websiteUrl: "https://tenmiencuaban.com/"
+  websiteUrl: "https://mtri05023.github.io/dien_lanh_tai_nha/"
 };

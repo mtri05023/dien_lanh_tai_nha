@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tenmiencuaban.com/sitemap.xml
+Sitemap: https://mtri05023.github.io/dien_lanh_tai_nha/sitemap.xml

@@ -1,0 +1,50 @@
+HUONG DAN SEO SAU KHI DEPLOY
+
+1. Doi canonical khi mua ten mien rieng
+- Mo index.html.
+- Tim the: <link rel="canonical" ...>
+- Doi URL sang ten mien that, vi du: https://tenmiencuaban.com/
+- Giữ HTTPS va dau / cuoi URL neu la trang chu.
+
+2. Doi og:url
+- Mo index.html.
+- Tim meta property="og:url".
+- Doi content sang URL trang chu moi.
+
+3. Doi sitemap
+- Mo sitemap.xml.
+- Doi <loc> sang URL HTTPS that cua trang chu.
+- Cap nhat <lastmod> theo ngay sua gan nhat, dinh dang YYYY-MM-DD.
+- Khong them URL khong ton tai hoac anchor dang #...
+
+4. Doi robots.txt
+- Mo robots.txt.
+- Doi dong Sitemap sang URL sitemap moi.
+- Vi du: Sitemap: https://tenmiencuaban.com/sitemap.xml
+- Khong chan thu muc assets, CSS, JS hoac hinh anh.
+
+5. Them Google Search Console
+- Vao https://search.google.com/search-console/
+- Them property dang URL prefix hoac Domain.
+- Xac minh quyen so huu theo huong dan cua Google.
+- Neu dung GitHub Pages va chua co ten mien rieng, dung URL prefix.
+
+6. Gui sitemap
+- Trong Google Search Console, vao Sitemaps.
+- Nhap sitemap.xml hoac URL day du cua sitemap.
+- Bam Submit.
+
+7. Yeu cau Google lap chi muc
+- Trong Google Search Console, dung URL Inspection.
+- Nhap URL trang chu.
+- Bam Request Indexing sau khi Google kiem tra xong.
+
+8. Kiem tra Rich Results
+- Vao https://search.google.com/test/rich-results
+- Nhap URL website hoac dan code HTML.
+- Kiem tra FAQPage va LocalBusiness/WebSite schema co loi hay khong.
+
+9. Kiem tra PageSpeed Insights
+- Vao https://pagespeed.web.dev/
+- Nhap URL website.
+- Kiem tra Mobile va Desktop, uu tien cac chi so LCP, CLS, INP.
