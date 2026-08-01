@@ -52,13 +52,13 @@
 
   const renderAggregateRating = (reviews) => {
     if (!reviews.length) return;
-    const schemaTag = document.getElementById("localBusinessSchema");
+    const schemaTag = document.getElementById("sitePrimarySchema");
     if (!schemaTag) return;
 
     try {
       const schema = JSON.parse(schemaTag.textContent || "{}");
       const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
-      const business = graph.find((item) => item["@type"] === "HomeAndConstructionBusiness");
+      const business = graph.find((item) => item["@type"] === "Organization");
       if (!business) return;
 
       const total = reviews.reduce((sum, review) => sum + review.rating, 0);

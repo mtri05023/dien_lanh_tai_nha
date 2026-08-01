@@ -1,0 +1,5 @@
+Contact: mailto:ngocnguyen9619@gmail.com
+Preferred-Languages: vi, en
+Canonical: https://suadienlanh.com.vn/.well-known/security.txt
+Policy: https://suadienlanh.com.vn/
+Expires: 2027-08-01T00:00:00+07:00

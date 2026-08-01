@@ -469,7 +469,7 @@ function bindQuoteForm() {
 }
 
 function renderSchema() {
-  const target = $("#localBusinessSchema");
+  const target = $("#sitePrimarySchema");
   if (!target) return;
   const siteUrl = cfg.websiteUrl || window.location.origin + "/";
   const normalizedSiteUrl = siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`;
@@ -484,7 +484,7 @@ function renderSchema() {
         "inLanguage": "vi-VN"
       },
       {
-        "@type": "HomeAndConstructionBusiness",
+        "@type": "Organization",
         "@id": `${normalizedSiteUrl}#business`,
         "name": cfg.brandName || "Sửa chữa điện lạnh tại nhà",
         "url": normalizedSiteUrl,
@@ -495,13 +495,14 @@ function renderSchema() {
           "@type": "AdministrativeArea",
           "name": "TP.HCM"
         },
-        "priceRange": "Từ 250.000đ",
         "openingHours": "Mo-Su 07:00-21:00",
-        "serviceType": [
-          "Sửa tủ lạnh tại nhà",
-          "Sửa máy giặt tại nhà",
-          "Sửa bếp từ tại nhà"
-        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": cfg.phoneRaw || "",
+          "contactType": "customer service",
+          "areaServed": "TP.HCM",
+          "availableLanguage": "vi"
+        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Dịch vụ sửa điện lạnh tại nhà TP.HCM",
@@ -534,6 +535,97 @@ function renderSchema() {
   target.textContent = JSON.stringify(schema);
 }
 
+function isDevelopment() {
+  return ["localhost", "127.0.0.1", ""].includes(window.location.hostname) || new URLSearchParams(window.location.search).has("debug_analytics");
+}
+
+function sendAnalyticsEvent(eventName, params = {}) {
+  if (typeof window.gtag !== "function") return;
+  const payload = {
+    page_path: window.location.pathname,
+    ...params
+  };
+  window.gtag("event", eventName, payload);
+  if (isDevelopment()) console.log("[ga4]", eventName, payload);
+}
+
+function getLinkText(link) {
+  return link.textContent.trim().replace(/\s+/g, " ").slice(0, 120);
+}
+
+function getServiceName(pathname) {
+  const serviceMap = {
+    "/sua-tu-lanh.html": "sua_tu_lanh",
+    "/sua-may-giat.html": "sua_may_giat",
+    "/sua-bep-tu.html": "sua_bep_tu"
+  };
+  return serviceMap[pathname] || "";
+}
+
+function isBlogArticlePath(pathname) {
+  return pathname.startsWith("/blog/") && pathname.endsWith(".html") && pathname !== "/blog/index.html";
+}
+
+function bindAnalyticsTracking() {
+  if (window.__siteAnalyticsTrackingBound) return;
+  window.__siteAnalyticsTrackingBound = true;
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    const absoluteUrl = new URL(href, window.location.href);
+    const pathname = absoluteUrl.pathname.replace(/\/+$/, "") || "/";
+    const baseParams = {
+      link_url: absoluteUrl.href,
+      link_text: getLinkText(link)
+    };
+
+    if (href.startsWith("tel:")) {
+      sendAnalyticsEvent("click_phone", {
+        ...baseParams,
+        phone_number: href.replace(/^tel:/, "")
+      });
+      return;
+    }
+
+    if (absoluteUrl.hostname.includes("zalo.me")) {
+      sendAnalyticsEvent("click_zalo", baseParams);
+      return;
+    }
+
+    if (pathname === "/bao-gia.html") {
+      sendAnalyticsEvent("click_price", baseParams);
+      return;
+    }
+
+    const serviceName = getServiceName(pathname);
+    if (serviceName) {
+      sendAnalyticsEvent("click_service", {
+        ...baseParams,
+        service_name: serviceName
+      });
+      return;
+    }
+
+    if (isBlogArticlePath(pathname)) {
+      sendAnalyticsEvent("click_blog", {
+        ...baseParams,
+        article_path: pathname
+      });
+    }
+  }, { passive: true });
+
+  document.addEventListener("submit", (event) => {
+    const form = event.target;
+    if (!form.matches?.("[data-contact-form], #contactForm, .contact-form")) return;
+    sendAnalyticsEvent("submit_contact", {
+      form_id: form.id || "",
+      form_name: form.getAttribute("name") || ""
+    });
+  }, true);
+}
+
 applyConfig();
 renderServices();
 renderPrices();
@@ -544,3 +636,4 @@ bindInteractions();
 bindFaqAccordion();
 bindQuoteForm();
 renderSchema();
+bindAnalyticsTracking();

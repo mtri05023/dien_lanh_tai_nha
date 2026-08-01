@@ -1,0 +1,11 @@
+/* TEAM */
+Site name: Sửa chữa điện lạnh tại nhà
+Website: https://suadienlanh.com.vn/
+Contact: ngocnguyen9619@gmail.com
+Location: TP.HCM, Việt Nam
+
+/* SITE */
+Language: Vietnamese
+Standards: HTML, CSS, JavaScript, JSON-LD, Sitemap XML
+Services: Sửa tủ lạnh, sửa máy giặt, sửa bếp từ tại nhà
+Last updated: 2026-08-01

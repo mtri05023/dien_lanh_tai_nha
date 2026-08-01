@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -16,8 +16,18 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="Sửa chữa điện lạnh tại nhà">
   <meta name="theme-color" content="#0b3d5c">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#0b3d5c">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  <meta name="msapplication-TileColor" content="#0b3d5c">
+
   <link rel="canonical" href="https://suadienlanh.com.vn/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
@@ -34,7 +44,7 @@
   <link rel="preload" as="image" href="assets/hero-service.webp" type="image/webp">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/css/review.css">
-  <script type="application/ld+json" id="localBusinessSchema">
+  <script type="application/ld+json" id="sitePrimarySchema">
     {
       "@context": "https://schema.org",
       "@graph": [
@@ -46,7 +56,7 @@
           "inLanguage": "vi-VN"
         },
         {
-          "@type": "HomeAndConstructionBusiness",
+          "@type": "Organization",
           "@id": "https://suadienlanh.com.vn/#business",
           "name": "Sửa chữa điện lạnh tại nhà",
           "url": "https://suadienlanh.com.vn/",
@@ -203,7 +213,89 @@
       ]
     }
   </script>
-</head>
+  <script type="application/ld+json" id="siteEntitySchema">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://suadienlanh.com.vn/#organization",
+          "name": "Sửa chữa điện lạnh tại nhà",
+          "url": "https://suadienlanh.com.vn/",
+          "logo": "https://suadienlanh.com.vn/assets/avatar-160.png",
+          "telephone": "0899993032",
+          "email": "ngocnguyen9619@gmail.com",
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "TP.HCM"
+          },
+          "openingHours": "Mo-Su 07:00-21:00",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "0899993032",
+            "contactType": "customer service",
+            "areaServed": "TP.HCM",
+            "availableLanguage": "vi"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://suadienlanh.com.vn/#website-search",
+          "name": "Sửa chữa điện lạnh tại nhà",
+          "url": "https://suadienlanh.com.vn/",
+          "inLanguage": "vi-VN",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://suadienlanh.com.vn/blog/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://suadienlanh.com.vn/#offer-catalog",
+          "name": "Dịch vụ sửa điện lạnh tại nhà TP.HCM",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sửa tủ lạnh tại nhà",
+                "serviceType": "Sửa tủ lạnh",
+                "areaServed": "TP.HCM",
+                "provider": {
+                  "@id": "https://suadienlanh.com.vn/#organization"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sửa máy giặt tại nhà",
+                "serviceType": "Sửa máy giặt",
+                "areaServed": "TP.HCM",
+                "provider": {
+                  "@id": "https://suadienlanh.com.vn/#organization"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sửa bếp từ tại nhà",
+                "serviceType": "Sửa bếp từ",
+                "areaServed": "TP.HCM",
+                "provider": {
+                  "@id": "https://suadienlanh.com.vn/#organization"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script></head>
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
@@ -236,8 +328,7 @@
           </div>
         </div>
         <a href="#price">Bảng giá</a>
-        <a href="#reviews">Đánh giá khách hàng</a>
-        <a href="#news">Tin tức</a>
+        <a href="blog/">Blog</a>
         <a href="#contact">Liên hệ</a>
         <a class="nav-call js-phone-link" href="tel:0899993032" aria-label="Gọi điện thoại 0899 993 032">Gọi ngay</a>
       </nav>
@@ -260,8 +351,7 @@
         <a href="#sua-may-giat" data-service-link><span class="drawer-icon">◎</span><span>Sửa máy giặt</span></a>
         <a href="#sua-bep-tu" data-service-link><span class="drawer-icon">▤</span><span>Sửa bếp từ</span></a>
         <a href="#price" data-service-link><span class="drawer-icon">đ</span><span>Bảng giá</span></a>
-        <a href="#reviews" data-service-link><span class="drawer-icon">★</span><span>Đánh giá khách hàng</span></a>
-        <a href="#news" data-service-link><span class="drawer-icon">N</span><span>Tin tức</span></a>
+        <a href="blog/" data-service-link><span class="drawer-icon">N</span><span>Blog</span></a>
         <a href="#contact" data-service-link><span class="drawer-icon">@</span><span>Liên hệ</span></a>
       </div>
     </div>
@@ -384,7 +474,7 @@
       </div>
     </section>
 
-    <section class="section reviews-section" id="reviews">
+    <section class="section reviews-section" id="reviews" hidden>
       <div class="container">
         <div class="section-heading">
           <span>Khách hàng đánh giá</span>
@@ -562,3 +652,6 @@
   <script src="assets/js/reviews.js" defer></script>
 </body>
 </html>
+
+
+

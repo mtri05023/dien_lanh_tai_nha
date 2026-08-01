@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /.git/
+Disallow: /.agents/
+Disallow: /.codex/
 
 Sitemap: https://suadienlanh.com.vn/sitemap.xml

@@ -42,7 +42,7 @@ HUONG DAN SEO SAU KHI DEPLOY
 8. Kiem tra Rich Results
 - Vao https://search.google.com/test/rich-results
 - Nhap URL website hoac dan code HTML.
-- Kiem tra FAQPage va LocalBusiness/WebSite schema co loi hay khong.
+- Kiem tra FAQPage, Organization, Service va WebSite schema co loi hay khong.
 
 9. Kiem tra PageSpeed Insights
 - Vao https://pagespeed.web.dev/

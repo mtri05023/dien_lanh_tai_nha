@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -12,13 +12,106 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Không tìm thấy trang | Sửa chữa điện lạnh tại nhà</title>
+  <meta name="description" content="Trang không tìm thấy. Tìm bài hướng dẫn sửa tủ lạnh, máy giặt, bếp từ hoặc quay lại dịch vụ sửa điện lạnh tại nhà TP.HCM.">
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#0b3d5c">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#0b3d5c">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  <meta name="msapplication-TileColor" content="#0b3d5c">
+
   <link rel="canonical" href="https://suadienlanh.com.vn/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/style.css">
-</head>
+  <script type="application/ld+json" id="siteEntitySchema">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://suadienlanh.com.vn/#organization",
+          "name": "Sửa chữa điện lạnh tại nhà",
+          "url": "https://suadienlanh.com.vn/",
+          "logo": "https://suadienlanh.com.vn/assets/avatar-160.png",
+          "telephone": "0899993032",
+          "email": "ngocnguyen9619@gmail.com",
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "TP.HCM"
+          },
+          "openingHours": "Mo-Su 07:00-21:00",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "0899993032",
+            "contactType": "customer service",
+            "areaServed": "TP.HCM",
+            "availableLanguage": "vi"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://suadienlanh.com.vn/#website-search",
+          "name": "Sửa chữa điện lạnh tại nhà",
+          "url": "https://suadienlanh.com.vn/",
+          "inLanguage": "vi-VN",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://suadienlanh.com.vn/blog/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://suadienlanh.com.vn/#offer-catalog",
+          "name": "Dịch vụ sửa điện lạnh tại nhà TP.HCM",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sửa tủ lạnh tại nhà",
+                "serviceType": "Sửa tủ lạnh",
+                "areaServed": "TP.HCM",
+                "provider": {
+                  "@id": "https://suadienlanh.com.vn/#organization"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sửa máy giặt tại nhà",
+                "serviceType": "Sửa máy giặt",
+                "areaServed": "TP.HCM",
+                "provider": {
+                  "@id": "https://suadienlanh.com.vn/#organization"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sửa bếp từ tại nhà",
+                "serviceType": "Sửa bếp từ",
+                "areaServed": "TP.HCM",
+                "provider": {
+                  "@id": "https://suadienlanh.com.vn/#organization"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script></head>
 <body>
   <header class="header">
     <div class="container nav-wrap">
@@ -35,16 +128,43 @@
 
   <main>
     <section class="section light">
-      <div class="container section-heading">
-        <span>404</span>
-        <h1>Không tìm thấy trang</h1>
-        <p>Trang bạn đang truy cập không tồn tại hoặc đã được thay đổi đường dẫn.</p>
-        <div class="hero-actions" style="justify-content:center">
+      <div class="container">
+        <div class="section-heading">
+          <span>404</span>
+          <h1>Không tìm thấy trang</h1>
+          <p>Trang bạn đang truy cập không tồn tại hoặc đã được thay đổi đường dẫn. Bạn có thể tìm bài hướng dẫn hoặc quay lại các dịch vụ chính.</p>
+        </div>
+        <form class="quote-form" action="blog/" method="get" role="search" aria-label="Tìm nội dung trên blog">
+          <label>Tìm kiếm<input type="search" name="q" placeholder="Ví dụ: tủ lạnh không lạnh, máy giặt không vắt, bếp từ E0" aria-label="Nhập nội dung cần tìm"></label>
+          <button class="btn btn-primary full" type="submit">Tìm trên Blog</button>
+        </form>
+        <div class="service-grid" style="margin-top:28px">
+          <article class="service-card">
+            <div class="service-top"><span class="service-icon" aria-hidden="true">▣</span><div><h2>Sửa tủ lạnh</h2><p>Không lạnh, chảy nước, đóng tuyết, kêu to, không làm đá.</p></div></div>
+            <a class="btn btn-outline" href="sua-tu-lanh.html">Xem dịch vụ</a>
+          </article>
+          <article class="service-card">
+            <div class="service-top"><span class="service-icon" aria-hidden="true">◎</span><div><h2>Sửa máy giặt</h2><p>Không vắt, không cấp nước, rung lắc, không xả nước.</p></div></div>
+            <a class="btn btn-outline" href="sua-may-giat.html">Xem dịch vụ</a>
+          </article>
+          <article class="service-card">
+            <div class="service-top"><span class="service-icon" aria-hidden="true">▤</span><div><h2>Sửa bếp từ</h2><p>Không lên nguồn, lỗi E0 E1 E2, chập điện, không nhận nồi.</p></div></div>
+            <a class="btn btn-outline" href="sua-bep-tu.html">Xem dịch vụ</a>
+          </article>
+        </div>
+        <div class="hero-actions" style="justify-content:center;margin-top:28px">
           <a class="btn btn-primary" href="https://suadienlanh.com.vn/">Về trang chủ</a>
+          <a class="btn btn-outline" href="blog/">Xem Blog</a>
           <a class="btn btn-outline" href="tel:0899993032" aria-label="Gọi điện thoại 0899 993 032">Gọi 0899 993 032</a>
         </div>
       </div>
     </section>
   </main>
+  <script src="assets/main.js" defer></script>
 </body>
 </html>
+
+
+
+
+

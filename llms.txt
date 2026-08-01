@@ -1,0 +1,23 @@
+# Sửa chữa điện lạnh tại nhà
+
+Website: https://suadienlanh.com.vn/
+Language: vi-VN
+Primary topic: Dịch vụ sửa tủ lạnh, sửa máy giặt, sửa bếp từ tại nhà TP.HCM.
+
+## Important URLs
+
+- Homepage: https://suadienlanh.com.vn/
+- Sửa tủ lạnh: https://suadienlanh.com.vn/sua-tu-lanh.html
+- Sửa máy giặt: https://suadienlanh.com.vn/sua-may-giat.html
+- Sửa bếp từ: https://suadienlanh.com.vn/sua-bep-tu.html
+- Blog: https://suadienlanh.com.vn/blog/
+- Sitemap: https://suadienlanh.com.vn/sitemap.xml
+
+## Content Scope
+
+The site provides practical Vietnamese content about recognizing appliance faults, checking safe symptoms at home, and contacting a technician for in-home inspection in TP.HCM.
+
+## Contact
+
+Phone: 0899 993 032
+Email: ngocnguyen9619@gmail.com
