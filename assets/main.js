@@ -133,6 +133,57 @@ const newsPosts = [
   }
 ];
 
+const faqItems = [
+  {
+    question: "Sửa tủ lạnh bao nhiêu tiền?",
+    answer: "Chi phí sửa tủ lạnh tùy lỗi thực tế, tình trạng máy và linh kiện cần xử lý. Kỹ thuật viên sẽ kiểm tra tại nhà ở TP.HCM và báo giá trước khi sửa."
+  },
+  {
+    question: "Tủ lạnh không lạnh có sửa tại nhà được không?",
+    answer: "Có. Kỹ thuật viên có thể kiểm tra tủ lạnh không lạnh tại nhà, xác định nguyên nhân và báo phương án sửa trước khi thực hiện."
+  },
+  {
+    question: "Tủ lạnh bị chảy nước là lỗi gì?",
+    answer: "Tủ lạnh chảy nước có thể do nghẹt đường thoát, gioăng hở hoặc vận hành bất thường. Cần kiểm tra thực tế để xác định đúng lỗi."
+  },
+  {
+    question: "Máy giặt không vắt sửa bao nhiêu tiền?",
+    answer: "Chi phí sửa máy giặt không vắt phụ thuộc nguyên nhân như tải lệch, lỗi xả nước, dây curoa, motor hoặc bo mạch. Kỹ thuật viên sẽ kiểm tra và báo giá trước."
+  },
+  {
+    question: "Máy giặt không cấp nước có sửa tại nhà không?",
+    answer: "Có. Dịch vụ nhận kiểm tra máy giặt không cấp nước tại nhà ở TP.HCM và báo nguyên nhân, chi phí trước khi sửa."
+  },
+  {
+    question: "Máy giặt rung lắc và kêu lớn xử lý thế nào?",
+    answer: "Kỹ thuật viên sẽ kiểm tra vị trí đặt máy, tải giặt, chân đế, lồng giặt và các bộ phận liên quan để tư vấn cách xử lý phù hợp."
+  },
+  {
+    question: "Bếp từ không lên nguồn có sửa được không?",
+    answer: "Có thể sửa tùy mức độ hư hỏng. Nên ngưng sử dụng và để kỹ thuật viên kiểm tra nguồn điện, mạch và linh kiện trước khi báo giá."
+  },
+  {
+    question: "Bếp từ báo lỗi E0, E1, E2 là lỗi gì?",
+    answer: "Các mã E0, E1, E2 thường liên quan đến nồi, nhiệt độ, nguồn điện hoặc cảm biến tùy từng dòng bếp. Cần kiểm tra đúng model để kết luận."
+  },
+  {
+    question: "Bếp từ bị chập điện có nên tiếp tục sử dụng không?",
+    answer: "Không nên tiếp tục sử dụng. Hãy ngắt nguồn bếp và liên hệ kỹ thuật viên kiểm tra để tránh rủi ro mất an toàn."
+  },
+  {
+    question: "Có báo giá trước khi sửa không?",
+    answer: "Có. Kỹ thuật viên kiểm tra thực tế, giải thích lỗi và báo chi phí trước. Chỉ sửa khi khách hàng đồng ý."
+  },
+  {
+    question: "Có bảo hành sau khi sửa không?",
+    answer: "Có bảo hành theo hạng mục sửa chữa hoặc linh kiện thay thế. Thời gian và điều kiện bảo hành được thông báo trước khi thực hiện."
+  },
+  {
+    question: "Có nhận sửa buổi tối hoặc cuối tuần không?",
+    answer: "Có nhận lịch buổi tối hoặc cuối tuần tùy khu vực TP.HCM và lịch kỹ thuật viên. Bạn nên liên hệ trước để được sắp xếp thời gian phù hợp."
+  }
+];
+
 function formatZaloUrl(message = "") {
   const baseUrl = `https://zalo.me/${cfg.zaloNumber || ""}`;
   return message ? `${baseUrl}?text=${encodeURIComponent(message)}` : baseUrl;
@@ -267,6 +318,65 @@ function activatePrice(id, shouldScroll = false) {
   tab.classList.add("active");
   panel.classList.add("active");
   if (shouldScroll) panel.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeFaqItem(item) {
+  const button = item.querySelector(".faq-question");
+  const answer = item.querySelector(".faq-answer");
+  if (!button || !answer) return;
+  item.classList.remove("active");
+  button.setAttribute("aria-expanded", "false");
+  answer.style.maxHeight = `${answer.scrollHeight}px`;
+  requestAnimationFrame(() => {
+    answer.style.maxHeight = "0px";
+  });
+  window.setTimeout(() => {
+    if (!item.classList.contains("active")) answer.hidden = true;
+  }, 280);
+}
+
+function openFaqItem(item) {
+  const button = item.querySelector(".faq-question");
+  const answer = item.querySelector(".faq-answer");
+  if (!button || !answer) return;
+  item.classList.add("active");
+  button.setAttribute("aria-expanded", "true");
+  answer.hidden = false;
+  answer.style.maxHeight = "0px";
+  requestAnimationFrame(() => {
+    answer.style.maxHeight = `${answer.scrollHeight}px`;
+  });
+}
+
+function bindFaqAccordion() {
+  const accordion = $("#faqAccordion");
+  if (!accordion) return;
+  const items = Array.from(accordion.querySelectorAll(".faq-item"));
+  items.forEach((item) => {
+    const answer = item.querySelector(".faq-answer");
+    if (!answer) return;
+    answer.style.maxHeight = item.classList.contains("active") ? `${answer.scrollHeight}px` : "0px";
+  });
+  accordion.addEventListener("click", (event) => {
+    const button = event.target.closest(".faq-question");
+    if (!button) return;
+    const item = button.closest(".faq-item");
+    const isOpen = item.classList.contains("active");
+    items.forEach((current) => {
+      if (current !== item && current.classList.contains("active")) closeFaqItem(current);
+    });
+    if (isOpen) {
+      closeFaqItem(item);
+    } else {
+      openFaqItem(item);
+    }
+  });
+  window.addEventListener("resize", () => {
+    items.forEach((item) => {
+      const answer = item.querySelector(".faq-answer");
+      if (answer && item.classList.contains("active")) answer.style.maxHeight = `${answer.scrollHeight}px`;
+    });
+  });
 }
 
 function bindInteractions() {
@@ -410,32 +520,14 @@ function renderSchema() {
       {
         "@type": "FAQPage",
         "@id": `${normalizedSiteUrl}#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Bảng giá trên website có phải giá cuối cùng không?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Không. Đây là giá tham khảo. Chi phí thực tế phụ thuộc tình trạng thiết bị, linh kiện và mức độ hư hỏng sau khi kiểm tra."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Có báo giá trước khi sửa không?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Có. Kỹ thuật viên kiểm tra và báo phương án xử lý trước. Khách hàng đồng ý thì mới tiến hành sửa chữa."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Bấm hotline và Zalo hoạt động thế nào?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Bấm hotline sẽ mở app điện thoại để gọi. Bấm Zalo sẽ mở cửa sổ nhắn tin Zalo với số kỹ thuật viên."
-            }
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -449,5 +541,6 @@ renderNews();
 applyConfig();
 renderQuoteOptions();
 bindInteractions();
+bindFaqAccordion();
 bindQuoteForm();
 renderSchema();
