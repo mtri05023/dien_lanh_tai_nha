@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mtri05023.github.io/dien_lanh_tai_nha/sitemap.xml
+Sitemap: https://suadienlanh.com.vn/sitemap.xml
