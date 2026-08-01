@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đánh Giá Khách Hàng | Sửa Điện Lạnh Tại Nhà</title>
+  <meta name="description" content="Gửi đánh giá dịch vụ sửa điện lạnh tại nhà. Thông tin cá nhân chỉ dùng để đối chiếu nội bộ và không hiển thị công khai.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b5cad">
+  <link rel="canonical" href="https://suadienlanh.com.vn/review.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/review.css">
+</head>
+<body class="review-page">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Kỹ thuật viên trên 10 năm kinh nghiệm - phục vụ <span class="js-area">TP.HCM và khu vực lân cận</span></span>
+      <a class="top-phone js-phone-link" href="tel:0899993032" aria-label="Gọi điện thoại 0899 993 032"><span>Hotline</span> <strong class="js-phone-text">0899 993 032</strong></a>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html#home" aria-label="Về trang chủ">
+        <span class="brand-mark"><img src="assets/avatar-160.png" alt="Logo Sửa chữa điện lạnh tại nhà" width="46" height="46" decoding="async"></span>
+        <span>
+          <b class="js-brand-name">SỬA CHỮA ĐIỆN LẠNH TẠI NHÀ</b>
+          <small>Sửa tủ lạnh - máy giặt - bếp từ tại nhà</small>
+        </span>
+      </a>
+      <button class="service-menu-btn" type="button" data-open-services aria-controls="serviceDrawer" aria-expanded="false">
+        <span aria-hidden="true">☰</span> Menu
+      </button>
+      <nav class="nav" aria-label="Menu chính">
+        <a href="index.html#home">Trang chủ</a>
+        <a href="index.html#services">Dịch vụ</a>
+        <a href="index.html#price">Bảng giá</a>
+        <a href="index.html#reviews">Đánh giá khách hàng</a>
+        <a href="index.html#contact">Liên hệ</a>
+        <a class="nav-call js-phone-link" href="tel:0899993032" aria-label="Gọi điện thoại 0899 993 032">Gọi ngay</a>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="drawer" id="serviceDrawer" aria-hidden="true" aria-label="Menu website">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div>
+          <strong>Menu</strong>
+          <span>Chọn nội dung cần xem</span>
+        </div>
+        <button class="drawer-close" type="button" data-close-services aria-label="Đóng menu">×</button>
+      </div>
+      <div class="drawer-list">
+        <a href="index.html#home" data-service-link><span class="drawer-icon">⌂</span><span>Trang chủ</span></a>
+        <a href="index.html#services" data-service-link><span class="drawer-icon">□</span><span>Dịch vụ</span></a>
+        <a href="index.html#price" data-service-link><span class="drawer-icon">đ</span><span>Bảng giá</span></a>
+        <a href="index.html#reviews" data-service-link><span class="drawer-icon">★</span><span>Đánh giá khách hàng</span></a>
+        <a href="index.html#contact" data-service-link><span class="drawer-icon">@</span><span>Liên hệ</span></a>
+      </div>
+    </div>
+  </aside>
+  <div class="drawer-backdrop" data-close-services hidden></div>
+
+  <main>
+    <section class="review-hero">
+      <div class="container review-hero-grid">
+        <div>
+          <span class="eyebrow">Đánh giá dịch vụ</span>
+          <h1>Gửi đánh giá sau khi sửa chữa</h1>
+          <p>Thông tin liên hệ, địa chỉ, chi phí và kỹ thuật viên chỉ dùng để đối chiếu nội bộ. Website công khai chỉ hiển thị tên rút gọn, số sao, dịch vụ, ngày sửa và nội dung đánh giá.</p>
+        </div>
+        <div class="review-hero-panel">
+          <strong>Quy trình duyệt đánh giá</strong>
+          <span>Khách gửi biểu mẫu, dữ liệu vào Google Sheets, quản trị viên đặt approved:true, website tự tải JSON công khai và hiển thị đánh giá đã duyệt.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="review-form-section">
+      <div class="container">
+        <form class="review-form" id="customerReviewForm">
+          <fieldset>
+            <legend>Customer</legend>
+            <label>Full Name<input name="fullName" type="text" autocomplete="name" required></label>
+            <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
+            <label>Zalo<input name="zalo" type="tel" autocomplete="tel"></label>
+            <label>District<input name="district" type="text" required></label>
+            <label class="full-field">Address<input name="address" type="text" autocomplete="street-address" required></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Service</legend>
+            <label>Service
+              <select name="service" required>
+                <option value="">Chọn dịch vụ</option>
+                <option>Sửa máy lạnh</option>
+                <option>Sửa tủ lạnh</option>
+                <option>Sửa máy giặt</option>
+                <option>Sửa bếp từ</option>
+              </select>
+            </label>
+            <label>Repair Date<input name="repairDate" type="date" required></label>
+            <label>Repair Cost<input name="repairCost" type="text" inputmode="numeric"></label>
+            <label>Technician<input name="technician" type="text"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Review</legend>
+            <div class="full-field">
+              <span>Rating ★★★★★</span>
+              <div class="rating-control" aria-label="Chọn số sao">
+                <input id="star5" name="rating" type="radio" value="5" checked>
+                <label for="star5" title="5 sao">★</label>
+                <input id="star4" name="rating" type="radio" value="4">
+                <label for="star4" title="4 sao">★</label>
+                <input id="star3" name="rating" type="radio" value="3">
+                <label for="star3" title="3 sao">★</label>
+                <input id="star2" name="rating" type="radio" value="2">
+                <label for="star2" title="2 sao">★</label>
+                <input id="star1" name="rating" type="radio" value="1">
+                <label for="star1" title="1 sao">★</label>
+              </div>
+            </div>
+            <label class="full-field">Comment<textarea name="comment" rows="5" required></textarea></label>
+          </fieldset>
+
+          <div class="review-submit-row">
+            <button class="btn btn-primary" type="submit">Gửi đánh giá</button>
+            <p class="review-status" id="reviewFormStatus" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="index.html#home">
+          <span class="brand-mark"><img src="assets/avatar-160.png" alt="Logo Sửa chữa điện lạnh tại nhà" width="46" height="46" loading="lazy" decoding="async"></span>
+          <span><b class="js-brand-name">SỬA CHỮA ĐIỆN LẠNH TẠI NHÀ</b><small>Dịch vụ sửa chữa tại nhà</small></span>
+        </a>
+        <p>Website tiếp nhận sửa tủ lạnh, sửa máy giặt và sửa bếp từ. Đánh giá công khai chỉ hiển thị thông tin đã được duyệt.</p>
+      </div>
+      <div>
+        <h2>Liên hệ</h2>
+        <p>Hotline: <a class="js-phone-link" href="tel:0899993032"><span class="js-phone-text">0899 993 032</span></a></p>
+        <p>Zalo: <a class="js-zalo-link" href="https://zalo.me/0899993032" target="_blank" rel="noopener noreferrer">Nhắn tin báo giá</a></p>
+        <p>Email: <span class="js-email">ngocnguyen9619@gmail.com</span></p>
+      </div>
+      <div>
+        <h2>Khu vực phục vụ</h2>
+        <p class="js-area">TP.HCM và khu vực lân cận</p>
+        <p>Giờ hỗ trợ: 7:00-21:00 hằng ngày</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/config.js" defer></script>
+  <script src="assets/main.js" defer></script>
+  <script src="assets/js/review.js" defer></script>
+</body>
+</html>
